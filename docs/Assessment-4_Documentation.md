@@ -44,16 +44,31 @@ The purpose of the application is to offer academic staff and administrators a l
 
 ## 3. Technologies & Module-5 Concepts Applied
 
-| Module-5 Concept | Implementation in Code |
+### 3.1 Pure Java AWT Implementation Matrix (Exact Module-5 Syllabus Mapping)
+The application includes a pure AWT desktop version (`AwtStudentApp.java`) implementing every component from the Module-5 syllabus:
+
+| Syllabus Component | AWT Class Used | Implementation in Project |
+| :--- | :--- | :--- |
+| **Top-Level Container** | `java.awt.Frame` | Base class for `AwtStudentApp` (`extends Frame`) with title, menu bar, and window sizing. |
+| **Intermediate Containers**| `java.awt.Panel` | Multiple panels organizing sections (`northPanel`, `formGrid`, `searchPanel`, `buttonBar`). |
+| **Modal / Non-Modal Dialog** | `java.awt.Dialog` | Modal confirmation & alert popups (`new Dialog(this, "Message", true)`). |
+| **Labels** | `java.awt.Label` | Form field descriptions and header titles (`new Label("Full Name:")`). |
+| **Single-Line Text Input** | `java.awt.TextField` | Input fields for ID, Name, Email, Phone, and Search (`new TextField(20)`). |
+| **Multi-Line Text Display**| `java.awt.TextArea` | Multi-line scrollable output display for records (`new TextArea(20, 50)`). |
+| **Buttons** | `java.awt.Button` | Action triggers: `Add Student`, `Update`, `Delete`, `Search`, `Clear Form`. |
+| **Drop-Down List** | `java.awt.Choice` | Dropdown selection for Department (`CSE`, `IT`, `ECE`, etc.) and Academic Year. |
+| **Radio Button Behavior** | `java.awt.CheckboxGroup` & `Checkbox` | Mutual exclusive gender selection (`new CheckboxGroup()`, `new Checkbox("Male", cg, true)`). |
+| **Menu System** | `MenuBar`, `Menu`, `MenuItem` | Top application menu bar with `File` (Refresh, Exit) and `Help` (About). |
+| **Layout Managers** | `BorderLayout`, `GridLayout`, `FlowLayout` | Complex responsive layout nesting: Form in `GridLayout(7,2)`, toolbar in `FlowLayout`, window in `BorderLayout`. |
+| **Event Handling** | `ActionListener`, `WindowAdapter` | `actionPerformed(ActionEvent e)` handling button actions; `windowClosing(WindowEvent e)` for clean exit. |
+
+### 3.2 JDBC Architecture & Enterprise Patterns
+| JDBC / Architecture Concept | Implementation in Code |
 | :--- | :--- |
-| **Top-Level Swing Windows** | `JFrame` used in `LoginFrame.java` and `DashboardFrame.java`; `JDialog` in `StudentFormDialog.java`. |
-| **Layout Managers** | `BorderLayout` for structured regional layouts, `GridLayout` for form inputs, and `FlowLayout` for action button bars. |
-| **Event Handling** | `ActionListener` interfaces and modern Java lambda expressions attached to buttons and keyboard event hooks. |
-| **GUI Thread Safety** | `SwingUtilities.invokeLater()` to guarantee all Swing component mutations occur on the Event Dispatch Thread (EDT). |
-| **JDBC Architecture** | Full JDBC pipeline: `DriverManager` $\to$ `Connection` $\to$ `PreparedStatement` $\to$ `ResultSet`. |
-| **SQL Injection Prevention** | All SQL queries are pre-compiled and use parameter placeholders (`?`). |
-| **DAO Pattern** | `StudentDAO.java` completely decouples business and UI logic from the persistence layer. |
-| **Unit Testing** | Automated JUnit 5 test classes (`StudentModelTest`, `StudentDAOTest`, `DesktopUITest`). |
+| **JDBC Driver** | `com.mysql.cj.jdbc.Driver` loaded dynamically. |
+| **Connection Pooling & Manager** | Centralized `DBConnection.getConnection()` using `DriverManager`. |
+| **PreparedStatement (Anti-SQLi)**| Parameterized SQL queries preventing SQL Injection across all CRUD operations. |
+| **DAO Pattern** | `StudentDAO.java` encapsulates all persistence logic with automatic in-memory fallback. |
 
 ---
 

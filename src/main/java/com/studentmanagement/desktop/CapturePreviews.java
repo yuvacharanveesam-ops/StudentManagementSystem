@@ -38,6 +38,14 @@ public class CapturePreviews {
 
         dashboard.dispose();
 
+        // 4. Capture AwtStudentApp
+        AwtStudentApp awtApp = new AwtStudentApp();
+        awtApp.pack();
+        awtApp.setSize(850, 680);
+        awtApp.doLayout();
+        captureComponent(awtApp, new File(outDir, "awt_screen.png"));
+        awtApp.dispose();
+
         System.out.println("All screenshots captured successfully!");
     }
 
