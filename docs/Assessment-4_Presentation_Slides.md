@@ -100,7 +100,7 @@ Copy the slide contents below directly into PowerPoint, Google Slides, or Canva:
 ---
 
 ## 📽️ SLIDE 8: Project Structure & GitHub Repository
-- **GitHub Repository**: `https://github.com/[YOUR_USERNAME]/[YOUR_REPO_NAME]`
+- **GitHub Repository**: `https://github.com/yuvacharanveesam-ops/StudentManagementSystem`
 - **Project Structure**:
   - `com.studentmanagement.desktop`: GUI Windows (`LoginFrame`, `DashboardFrame`, `StudentFormDialog`, `Main`)
   - `com.studentmanagement.dao`: Data access logic (`StudentDAO`)

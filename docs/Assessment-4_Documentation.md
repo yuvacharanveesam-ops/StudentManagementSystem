@@ -2,7 +2,7 @@
 
 **Course**: Java Programming (Module-5: GUI & JDBC Architecture)  
 **Project Title**: Student Management System (SMS) Desktop Application  
-**Repository**: [Insert GitHub Repository Link Here]  
+**Repository**: https://github.com/yuvacharanveesam-ops/StudentManagementSystem  
 
 ---
 
@@ -373,6 +373,5 @@ public class StudentDAO {
 
 ## 6. GitHub Repository Link
 ```
-https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPO_NAME]
+https://github.com/yuvacharanveesam-ops/StudentManagementSystem
 ```
-*(Insert your actual GitHub URL after following the push instructions).*
