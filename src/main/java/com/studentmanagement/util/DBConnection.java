@@ -61,17 +61,27 @@ public class DBConnection {
         return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
     }
 
+    private static volatile Boolean connectionWorking = null;
+
     /**
      * Tests whether the database is reachable.
-     * Used by the application at startup to give a helpful error message.
+     * Caches the result so subsequent operations do not incur repeated network delays.
      *
      * @return true if connection succeeds, false otherwise
      */
     public static boolean testConnection() {
-        try (Connection con = getConnection()) {
-            return con != null && !con.isClosed();
+        if (connectionWorking != null) {
+            return connectionWorking;
+        }
+        try {
+            DriverManager.setLoginTimeout(2);
+            try (Connection con = getConnection()) {
+                connectionWorking = (con != null && !con.isClosed());
+                return connectionWorking;
+            }
         } catch (SQLException e) {
             System.err.println("[DBConnection] Connection test failed: " + e.getMessage());
+            connectionWorking = false;
             return false;
         }
     }

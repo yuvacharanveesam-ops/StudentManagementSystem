@@ -458,11 +458,15 @@ public class AwtStudentApp extends Frame implements ActionListener {
 
     // ── Application Entry Point ───────────────────────────────────────────────
     public static void main(String[] args) {
-        boolean dbConnected = DBConnection.testConnection();
-        if (!dbConnected) {
-            System.out.println("[AwtStudentApp] MySQL not connected. Using In-Memory Fallback Demo.");
-        }
-        AwtStudentApp app = new AwtStudentApp();
-        app.setVisible(true);
+        EventQueue.invokeLater(() -> {
+            try {
+                AwtStudentApp app = new AwtStudentApp();
+                app.setVisible(true);
+                app.toFront();
+                app.requestFocus();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
